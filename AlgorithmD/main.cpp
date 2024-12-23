@@ -90,8 +90,8 @@ int main() {
             }
 
             // Вывод статистики графа
-            cout << "Количество вершин: " << graph.getVertexCount() << endl;
-            cout << "Количество рёбер: " << graph.getEdgeCount() << endl;
+            //cout << "Количество вершин: " << graph.getVertexCount() << endl;
+            //cout << "Количество рёбер: " << graph.getEdgeCount() << endl;
 
             // Вывод кратчайших расстояний
             cout << "Кратчайшие расстояния от вершины " << startVertex << ":\n";
