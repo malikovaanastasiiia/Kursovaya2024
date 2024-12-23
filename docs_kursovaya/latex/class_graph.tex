@@ -1,0 +1,185 @@
+\doxysection{Класс Graph}
+\hypertarget{class_graph}{}\label{class_graph}\index{Graph@{Graph}}
+
+
+Класс для представления направленного взвешенного графа.  
+
+
+
+
+{\ttfamily \#include $<$my\+\_\+lab.\+hpp$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_ac47c886286a43e640423b6d8d4868b29}{Graph}} (int v)
+\begin{DoxyCompactList}\small\item\em Конструктор графа. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_ae0fb47d4e55ad88c5f254849e6410688}{add\+Edge}} (int u, int v, int weight)
+\begin{DoxyCompactList}\small\item\em Добавляет ребро в граф. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a530933d7ecb3e54b7ca73e9280de6fa2}{load\+From\+File}} (const std\+::string \&file\+Name, int \&start\+Vertex)
+\begin{DoxyCompactList}\small\item\em Загружает граф из файла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a7e4794841479511394f7084895862cc2}{to\+Graphviz}} (const std\+::string \&file\+Name) const
+\begin{DoxyCompactList}\small\item\em Экспортирует граф в формате Graphviz. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_graph_a5b8f751e829d44bc0a61ffb55744581d}{dijkstra}} (int start\+Vertex, const std\+::string \&file\+Name) const
+\begin{DoxyCompactList}\small\item\em Реализует алгоритм Дейкстры для поиска кратчайших путей. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для представления направленного взвешенного графа. 
+
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_graph_ac47c886286a43e640423b6d8d4868b29}\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily \label{class_graph_ac47c886286a43e640423b6d8d4868b29} 
+Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{int}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор графа. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em v} & Количество вершин в графе. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\Hypertarget{class_graph_ae0fb47d4e55ad88c5f254849e6410688}\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \label{class_graph_ae0fb47d4e55ad88c5f254849e6410688} 
+void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{int}]{u}{, }\item[{int}]{v}{, }\item[{int}]{weight}{}\end{DoxyParamCaption})}
+
+
+
+Добавляет ребро в граф. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em u} & Начальная вершина. \\
+\hline
+{\em v} & Конечная вершина. \\
+\hline
+{\em weight} & Вес ребра. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_graph_a5b8f751e829d44bc0a61ffb55744581d}\index{Graph@{Graph}!dijkstra@{dijkstra}}
+\index{dijkstra@{dijkstra}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{dijkstra()}{dijkstra()}}
+{\footnotesize\ttfamily \label{class_graph_a5b8f751e829d44bc0a61ffb55744581d} 
+vector$<$ int $>$ Graph\+::dijkstra (\begin{DoxyParamCaption}\item[{int}]{start\+Vertex}{, }\item[{const std\+::string \&}]{file\+Name}{}\end{DoxyParamCaption}) const}
+
+
+
+Реализует алгоритм Дейкстры для поиска кратчайших путей. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em start\+Vertex} & Начальная вершина. \\
+\hline
+{\em file\+Name} & Имя файла для сохранения результатов. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вектор кратчайших расстояний до каждой вершины. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если файл не может быть создан.\\
+\hline
+\end{DoxyExceptions}
+Метод ищет кратчайшие пути от заданной начальной вершины до всех остальных вершин графа. 
+\begin{DoxyParams}{Аргументы}
+{\em start\+Vertex} & Начальная вершина для алгоритма. \\
+\hline
+{\em file\+Name} & Имя файла для сохранения результатов работы алгоритма в формате Graphviz. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вектор минимальных расстояний от начальной вершины до всех остальных вершин. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если файл не может быть создан для записи. \\
+\hline
+\end{DoxyExceptions}
+\texorpdfstring{$<$}{<} Множество для хранения вершин с их расстояниями.
+
+\texorpdfstring{$<$}{<} Вектор для отслеживания путей.
+
+\texorpdfstring{$<$}{<} Количество операций вставки.
+
+\texorpdfstring{$<$}{<} Количество операций удаления.
+
+\texorpdfstring{$<$}{<} Количество операций релаксации.\Hypertarget{class_graph_a530933d7ecb3e54b7ca73e9280de6fa2}\index{Graph@{Graph}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{loadFromFile()}{loadFromFile()}}
+{\footnotesize\ttfamily \label{class_graph_a530933d7ecb3e54b7ca73e9280de6fa2} 
+void Graph\+::load\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name}{, }\item[{int \&}]{start\+Vertex}{}\end{DoxyParamCaption})}
+
+
+
+Загружает граф из файла. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em file\+Name} & Имя файла. \\
+\hline
+{\em start\+Vertex} & Начальная вершина. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если файл не может быть открыт.\\
+\hline
+\end{DoxyExceptions}
+Метод читает граф из текстового файла, где каждая строка представляет веса рёбер между вершинами. 
+\begin{DoxyParams}{Аргументы}
+{\em file\+Name} & Имя файла с данными о графе. \\
+\hline
+{\em start\+Vertex} & Начальная вершина, указанная в файле. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если файл не может быть открыт. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_graph_a7e4794841479511394f7084895862cc2}\index{Graph@{Graph}!toGraphviz@{toGraphviz}}
+\index{toGraphviz@{toGraphviz}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{toGraphviz()}{toGraphviz()}}
+{\footnotesize\ttfamily \label{class_graph_a7e4794841479511394f7084895862cc2} 
+void Graph\+::to\+Graphviz (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name}{}\end{DoxyParamCaption}) const}
+
+
+
+Экспортирует граф в формате Graphviz. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em file\+Name} & Имя файла для экспорта. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если файл не может быть открыт.\\
+\hline
+\end{DoxyExceptions}
+Создаёт файл, который можно использовать с инструментами Graphviz для визуализации графа. 
+\begin{DoxyParams}{Аргументы}
+{\em file\+Name} & Имя файла для экспорта. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если файл не может быть открыт для записи. \\
+\hline
+\end{DoxyExceptions}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{my__lab_8hpp}{my\+\_\+lab.\+hpp}}\item 
+my\+\_\+lab.\+cpp\end{DoxyCompactItemize}

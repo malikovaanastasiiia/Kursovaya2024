@@ -1,0 +1,61 @@
+\doxysection{my\+\_\+lab.\+hpp}
+\hypertarget{my__lab_8hpp_source}{}\label{my__lab_8hpp_source}\mbox{\hyperlink{my__lab_8hpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ my\_lab\_hpp}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ my\_lab\_hpp}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ my\_lab\_hpp\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MY\_LAB\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graph}{Graph}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_graph_ac47c886286a43e640423b6d8d4868b29}{Graph}}(\textcolor{keywordtype}{int}\ v);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_ae0fb47d4e55ad88c5f254849e6410688}{addEdge}}(\textcolor{keywordtype}{int}\ u,\ \textcolor{keywordtype}{int}\ v,\ \textcolor{keywordtype}{int}\ weight);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a530933d7ecb3e54b7ca73e9280de6fa2}{loadFromFile}}(\textcolor{keyword}{const}\ std::string\&\ fileName,\ \textcolor{keywordtype}{int}\&\ startVertex);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a7e4794841479511394f7084895862cc2}{toGraphviz}}(\textcolor{keyword}{const}\ std::string\&\ fileName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{class_graph_a5b8f751e829d44bc0a61ffb55744581d}{dijkstra}}(\textcolor{keywordtype}{int}\ startVertex,\ \textcolor{keyword}{const}\ std::string\&\ fileName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ vertices;\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ edgeCount;\ }
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<std::vector<std::pair<int,\ int>>>\ adjList;\ }
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{comment}{/*class\ Graph\ \{}}
+\DoxyCodeLine{00078\ \textcolor{comment}{private:}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ \ int\ vertices;}}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ \ vector<vector<pair<int,\ int>>>\ adjList;}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ int\ edgeCount;}}
+\DoxyCodeLine{00082\ \textcolor{comment}{}}
+\DoxyCodeLine{00083\ \textcolor{comment}{public:}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ Graph(int\ v);}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ void\ addEdge(int\ u,\ int\ v,\ int\ weight);}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ void\ loadFromFile(const\ string\&\ fileName,\ int\&\ startVertex);}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ void\ toGraphviz(const\ string\&\ fileName)\ const;}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ vector<int>\ dijkstra(int\ startVertex,\ const\ string\&\ fileName)\ const;}}
+\DoxyCodeLine{00089\ \textcolor{comment}{}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ int\ getEdgeCount()\ const\ \{\ return\ edgeCount;\ \}}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ \ int\ getVertexCount()\ const\ \{\ return\ vertices;\ \}}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00093\ \textcolor{comment}{*/}}
+
+\end{DoxyCode}
