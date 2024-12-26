@@ -1,7 +1,3 @@
-/**
- * @file main.cpp
- * @brief Основной файл программы для работы с графами, включающий визуализацию и поиск кратчайших путей с использованием алгоритма Дейкстры.
- */
 
 #include "my_lab.hpp"
 #include <iostream>
@@ -13,20 +9,21 @@
 using namespace std;
 
 /**
- * @brief Точка входа в программу.
- * @details Программа позволяет загрузить граф из файла, отобразить его и найти кратчайшие пути с помощью алгоритма Дейкстры.
- * @return Код завершения программы (0 - успешно, 1 - ошибка).
+ * @brief Анализирует сложность алгоритмов для различных размеров графа.
+ *        Результаты сохраняются в файл "complexity.dat".
  */
+void analyzeComplexity();
+
 int main() {
     try {
         string inputFile;
         cout << "Введите имя входного файла: ";
         cin >> inputFile;
 
-        // Формируем путь к файлу
+        // Формирование полного пути к входному файлу
         string current_path = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursovaya/AlgorithmD/AlgorithmD/" + inputFile;
-        
-        // Проверяем существование файла
+
+        // Проверка существования файла
         ifstream fileCheck(current_path);
         if (!fileCheck.is_open()) {
             cerr << "Ошибка открытия файла: " << inputFile << " Проверьте путь или наличие файла." << endl;
@@ -34,33 +31,33 @@ int main() {
         }
         fileCheck.close();
 
-        // Загружаем граф из файла
+        // Создание объекта графа
         Graph graph(0);
         int startVertex;
         graph.loadFromFile(current_path, startVertex);
 
-        // Основное меню программы
         cout << "Выберите действие:\n";
         cout << "1. Отобразить граф\n";
         cout << "2. Применить Алгоритм Дейкстры\n";
+        cout << "3. Сравнить алгоритмы\n";
         cout << "Ваш выбор: ";
         int choice;
         cin >> choice;
 
         if (choice == 1) {
-            // Отображение графа
+            // Вывод графа в файл .dot и генерация изображения
             cout << "Введите имя выходного файла (без расширения): ";
             string outputFile;
             cin >> outputFile;
 
-            string outputDotFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursовaya/AlgorithmD/AlgorithmD/output.dot";
-            string outputPngFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursовaya/AlgorithmD/AlgorithmD/output.png";
-            
+            string outputDotFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursovaya/AlgorithmD/AlgorithmD/output.dot";
+            string outputPngFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursovaya/AlgorithmD/AlgorithmD/output.png";
+
             cout << "Создаётся файл: " << outputDotFile << endl;
             graph.toGraphviz(outputDotFile);
             cout << "Файл успешно создан: " << outputDotFile << endl;
 
-            // Генерация PNG с помощью Graphviz
+            // Вызов команды dot для создания изображения
             string command = "/opt/homebrew/bin/dot -Tpng " + outputDotFile + " -o " + outputPngFile;
             int result = system(command.c_str());
             if (result != 0) {
@@ -74,13 +71,13 @@ int main() {
             string outputFile;
             cin >> outputFile;
 
-            string outputDotFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursовaya/AlgorithmD/AlgorithmD/output.dot";
-            string outputPngFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursовaya/AlgorithmD/AlgorithmD/output.png";
+            string outputDotFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursovaya/AlgorithmD/AlgorithmD/output.dot";
+            string outputPngFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursovaya/AlgorithmD/AlgorithmD/output.png";
 
             cout << "Применяем алгоритм Дейкстры с начальной вершины: " << startVertex << endl;
             vector<int> distances = graph.dijkstra(startVertex, outputDotFile);
 
-            // Генерация PNG с помощью Graphviz
+            // Вызов команды dot для создания изображения
             string command = "/opt/homebrew/bin/dot -Tpng " + outputDotFile + " -o " + outputPngFile;
             int result = system(command.c_str());
             if (result != 0) {
@@ -89,15 +86,18 @@ int main() {
                 cout << "Результат работы Алгоритма Дейкстры сохранён в файле: " << outputPngFile << endl;
             }
 
-            // Вывод статистики графа
-            //cout << "Количество вершин: " << graph.getVertexCount() << endl;
-            //cout << "Количество рёбер: " << graph.getEdgeCount() << endl;
+            // Вывод информации о графе
+            cout << "Количество вершин: " << graph.getVertexCount() << endl;
+            cout << "Количество рёбер: " << graph.getEdgeCount() << endl;
 
             // Вывод кратчайших расстояний
             cout << "Кратчайшие расстояния от вершины " << startVertex << ":\n";
             for (size_t i = 0; i < distances.size(); ++i) {
                 cout << "До вершины " << i << ": " << distances[i] << endl;
             }
+        } else if (choice == 3) {
+            // Сравнение алгоритмов
+            analyzeComplexity();
         } else {
             cerr << "Неверный выбор. Завершение программы.\n";
         }
@@ -110,18 +110,10 @@ int main() {
 }
 
 
+
 /*
-
-
-#include "my_lab.hpp"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <filesystem>
-#include <limits.h>
-
 using namespace std;
-
+void analyzeComplexity();
 int main() {
     try {
         string inputFile;
@@ -143,6 +135,7 @@ int main() {
         cout << "Выберите действие:\n";
         cout << "1. Отобразить граф\n";
         cout << "2. Применить Алгоритм Дейкстры\n";
+        cout << "3. Сравнить алгоритмы\n";
         cout << "Ваш выбор: ";
         int choice;
         cin >> choice;
@@ -170,13 +163,13 @@ int main() {
             cout << "Введите имя выходного файла (без расширения): ";
             string outputFile;
             cin >> outputFile;
-
+            
             string outputDotFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursovaya/AlgorithmD/AlgorithmD/output.dot";
             string outputPngFile = "/Users/anastasiamalikova/Desktop/SUAI/ОП/kursovaya/AlgorithmD/AlgorithmD/output.png";
-
+            
             cout << "Применяем алгоритм Дейкстры с начальной вершины: " << startVertex << endl;
             vector<int> distances = graph.dijkstra(startVertex, outputDotFile);
-
+            
             string command = "/opt/homebrew/bin/dot -Tpng " + outputDotFile + " -o " + outputPngFile;
             int result = system(command.c_str());
             if (result != 0) {
@@ -185,15 +178,17 @@ int main() {
                 cout << "Результат работы Алгоритма Дейкстры сохранён в файле: " << outputPngFile << endl;
             }
             
-            //cout << "Количество вершин: " << graph.getVertexCount() << endl;
-            //cout << "Количество рёбер: " << graph.getEdgeCount() << endl;
-
+            cout << "Количество вершин: " << graph.getVertexCount() << endl;
+            cout << "Количество рёбер: " << graph.getEdgeCount() << endl;
+            
             cout << "Кратчайшие расстояния от вершины " << startVertex << ":\n";
             for (size_t i = 0; i < distances.size(); ++i) {
                 cout << "До вершины " << i << ": " << distances[i] << endl;
             }
-            
-        } else {
+        }
+        else if (choice == 3) {
+            analyzeComplexity();
+        } else{
             cerr << "Неверный выбор. Завершение программы.\n";
         }
     } catch (const exception &e) {
